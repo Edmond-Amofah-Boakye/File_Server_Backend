@@ -43,7 +43,7 @@ app.use('/api', limit)
 
 //using cors middleware
 app.use(cors({
-    origin: "http://localhost:5173",
+    origin: "https://fileserverapp.onrender.com",
     credentials: true
 }))
 
