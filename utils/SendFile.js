@@ -3,13 +3,11 @@ import nodemailer from 'nodemailer';
 const sendFile = (email, message, filename, filePath)  =>{
 
     const transport = nodemailer.createTransport({
-        host: 'smtp.gmail.com',
-            port: 465,
-            secure: true,
-            auth: {
-              user: process.env.EMAIL,
-              pass: process.env.USER_PASSWORD,
-            },
+        service: "SendGrid",
+        auth: {
+          user: process.env.SENDGRID_NAME,
+          pass: process.env.SENDGRID_API,
+        },
     })
 
     const mailOptions = {
