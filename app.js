@@ -39,11 +39,11 @@ app.use('/api', limit)
 
 
 https://visionary-longma-bfc154.netlify.app/
-
 // https://fileserverapp.onrender.com
+
 //using cors middleware
 app.use(cors({
-    origin: "https://visionary-longma-bfc154.netlify.app",
+    origin: "https://fileserverapp.onrender.com",
     credentials: true,
     methods: ["GET", "PUT", "POST", "DELETE", "OPTIONS"],
     allowedHeaders:[
