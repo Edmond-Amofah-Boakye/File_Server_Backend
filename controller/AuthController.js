@@ -132,7 +132,7 @@ export async function forgotPassword(req, res, next) {
     await userInTokenModel.save(); 
 
     //sending email
-    const url = `http://localhost:5173/password/reset/${userInTokenModel.resetPasswordToken}`;
+    const url = `https://fileserverapp.onrender.com/password/reset/${userInTokenModel.resetPasswordToken}`;
     new sendEmail(userExists.email, "", url).resetpassword();
 
     res.status(201).json({
