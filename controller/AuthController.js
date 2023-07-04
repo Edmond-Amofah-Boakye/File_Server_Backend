@@ -61,6 +61,7 @@ export async function login(req, res, next) {
     })
       
       return res.status(201).json({
+        token,
         role: userExists.role,
         message: "login successful"
       });
