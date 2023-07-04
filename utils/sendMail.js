@@ -8,18 +8,15 @@ class SendMail{
         this.from = process.env.EMAIL
     }
 
-    createTransport(){
+   createTransport(){
         return nodemailer.createTransport({
-            host: 'smtp.gmail.com',
-            port: 465,
-            secure: true,
+            service: "SendGrid",
             auth: {
-              user: process.env.EMAIL,
-              pass: process.env.USER_PASSWORD,
+              user: process.env.SENDGRID_NAME,
+              pass: process.env.SENDGRID_API,
             },
         })
     }
-
     async send(subject, message, file, filename){
         const mailOptions = {
             from: process.env.EMAIL,
