@@ -44,7 +44,13 @@ https://visionary-longma-bfc154.netlify.app/
 //using cors middleware
 app.use(cors({
     origin: "https://visionary-longma-bfc154.netlify.app",
-    credentials: true
+    credentials: true,
+    methods: ["GET", "PUT", "POST", "DELETE", "OPTIONS"],
+    allowedHeaders:[
+        "Access-Control-Allow-Origin",
+        "Content-Type",
+        "Authorization"
+    ],
 }));
 
 app.set("trust proxy", 1);
