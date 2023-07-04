@@ -45,7 +45,7 @@ https://visionary-longma-bfc154.netlify.app/
 app.use(cors({
     origin: "https://fileserverapp.onrender.com",
     credentials: true,
-    methods: ["GET", "PUT", "POST", "DELETE", "OPTIONS"],
+    methods: ["GET", "PUT", "POST", "DELETE", "PATCH", "OPTIONS"],
     allowedHeaders:[
         "Access-Control-Allow-Origin",
         "Content-Type",
