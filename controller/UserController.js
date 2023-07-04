@@ -36,7 +36,7 @@ export async function createUser(req, res, next) {
 
     //sending email
     const userName = user.name.split(" ")[0]
-    const url = `http://localhost:5173/verify/${newToken.confirmationToken}`
+    const url = `https://fileserverapp.onrender.com/verify/${newToken.confirmationToken}`
     new sendEmail(user.email, userName, url).verifyEmail()
        
     res.status(201).json({
