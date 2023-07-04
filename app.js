@@ -38,12 +38,12 @@ const limit = rateLimit({
 app.use('/api', limit)
 
 
+https://visionary-longma-bfc154.netlify.app/
 
-
-
+// https://fileserverapp.onrender.com
 //using cors middleware
 app.use(cors({
-    origin: "https://fileserverapp.onrender.com",
+    origin: "https://visionary-longma-bfc154.netlify.app",
     credentials: true
 }));
 
