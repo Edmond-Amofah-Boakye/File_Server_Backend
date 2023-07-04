@@ -45,7 +45,9 @@ app.use('/api', limit)
 app.use(cors({
     origin: "https://fileserverapp.onrender.com",
     credentials: true
-}))
+}));
+
+app.set("trust proxy", 1);
 
 //using morgan middleware
 if(process.env.NODE_ENV === "development"){
