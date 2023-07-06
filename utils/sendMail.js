@@ -83,7 +83,7 @@ class SendMail{
               >RESET</button></a>
             </center>
         `
-        await this.send("Password Verification", message)
+        await this.send("Password Reset", message)
       }
 
 }
