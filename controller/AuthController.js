@@ -136,7 +136,7 @@ export async function forgotPassword(req, res, next) {
     new sendEmail(userExists.email, "", url).resetpassword();
 
     res.status(201).json({
-      message: "successful, activate your account through your email",
+      message: "successful, reset your password through a link in your provided email",
     });
   } catch (error) {
     next(error);
