@@ -9,6 +9,11 @@ const fileModel = new mongoose.Schema({
         maxlength: 30
     },
 
+    filename:{
+        type: String,
+        trim: true,
+    },
+
     description:{
         type: String,
         required: [true, "File description is required"],
