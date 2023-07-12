@@ -24,11 +24,12 @@ const filterObject = (obj, ...allowedFields) =>{
 export async function createFile(req, res, next) {
     const { title, description, type } = req.body;
 
-    const createdFile = new FileModel({
+   const createdFile = new FileModel({
       title,
+      filename: req.file.filename,
       description,
       type,
-      file: req.file.filename,
+      file: req.file.path,
       createdBy: req.user.id
     });
   
@@ -146,7 +147,7 @@ export async function updateFile(req, res, next){
   export async function downloadFile(req, res, next){
     const { filename } = req.params;
     try {
-        const fileExists = await FileModel.findOne({file:filename})
+        const fileExists = await FileModel.findOne({filename})
         if(!fileExists){
             return next(new AppError("no file found", 404))
         }
@@ -174,15 +175,14 @@ export async function updateFile(req, res, next){
     const { filename} = req.params
     try {
 
-      const fileExists = await FileModel.findOne({file: filename})
+      const fileExists = await FileModel.findOne({filename})
       if(!fileExists){
         return next(new AppError("no file found", 404))
       }
 
       //reading file
-      const filePath = path.join(__dirname, "../uploads", filename)
-
-       console.log(filePath);
+      const filePath = path.join(__dirname, "../uploads", fileExists.filename)
+        
       //send file
       try {
         sendFile(email, message, filename, filePath)
@@ -233,14 +233,16 @@ export async function updateFile(req, res, next){
   export async function previewFile(req, res, next){
     const { filename } = req.params;
     try {
-        const fileExists = await FileModel.findOne({file:filename})
+        const fileExists = await FileModel.findOne({filename})
         if(!fileExists){
             return next(new AppError("no file found", 404))
         }
     
-        const filePath = path.join(__dirname, "../uploads", filename)
+        const filePath = path.join(__dirname, `../uploads/${fileExists.filename}`)
         
-        res.set("Content-Disposition", "inline")
+         res.set({
+          'Content-Disposition': 'inline'
+        });
 
         res.sendFile(filePath)
         
