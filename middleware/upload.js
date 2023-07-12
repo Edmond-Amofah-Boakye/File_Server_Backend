@@ -9,7 +9,7 @@ const multerStorage = multer.diskStorage({
 
     filename: (req, file, cb)=>{
         const ext = file.mimetype.split("/")[1]
-        cb(null, `user-${req.user._id}-${Date.now()}.${ext}`)
+        cb(null, Date.now() + path.extname(file.originalname))
     }
 })
 
@@ -28,9 +28,9 @@ const fileFilter = (req, file, cb) =>{
 const upload = multer({
     storage: multerStorage,
     fileFilter: fileFilter,
-    // limits: {
-    //     fileSize: 5000000 // max file size 5MB = 1000000 bytes
-    //   },
+   limits: {
+        fileSize: 25 * 1024 * 1024, // 25MB in bytes
+      },
 })
 
 
