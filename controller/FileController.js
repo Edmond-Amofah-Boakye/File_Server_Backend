@@ -103,7 +103,8 @@ export async function updateFile(req, res, next){
 
       const filterBody = filterObject(req.body, "title", "description", "type")
       if(req.file){
-        filterBody.file = req.file.filename;
+        filterBody.filename = req.file.filename;
+        filterBody.file = req.file.path;
       }
   
       const updatedFile = await FileModel.findByIdAndUpdate(req.params.id, filterBody, {
